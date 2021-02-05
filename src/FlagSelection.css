@@ -1,0 +1,11 @@
+.FlagSelection {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.FlagSelection-h2 {
+  margin-bottom: 50px;
+  margin-top: 50px;
+  font-size: 2.5rem;
+}

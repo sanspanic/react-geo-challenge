@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import FlagSelection from './FlagSelection';
 import countryCodes from "./countryCodes";
+import './Gameboard.css'
 
 const Gameboard = () => {
 
@@ -35,13 +36,13 @@ const Gameboard = () => {
     }
 
   return (
-  <div>
-      <h1>Guess the Flag</h1>
-      {selection.length === 0 ? <button onClick={handleStart}>Start</button> : null}
+  <div className="Gameboard">
+      {selection.length === 0 ? <button className="Gameboard-start-btn" onClick={handleStart}>Start</button> : null}
       <div>
           <FlagSelection checkIfCorrect={checkIfCorrect} currCountry={currCountry} selection={selection}/>
       </div>
-      <div>
+      <div className="Gameboard-spacer"></div>
+      <div className="Gameboard-score">
           Current score: {score}
       </div>
   </div>

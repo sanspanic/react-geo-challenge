@@ -1,0 +1,9 @@
+.Flag {
+  transition: 0.3s all;
+  padding-left: 20px;
+}
+
+.Flag:hover {
+  cursor: pointer;
+  transform: scale(1.2, 1.2);
+}
