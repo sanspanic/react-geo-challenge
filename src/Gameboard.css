@@ -1,3 +1,9 @@
+.Gameboard-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-end;
+}
+
 .Gameboard-start-btn {
   padding: 10px 20px;
   background-color: hsl(79, 77%, 86%);

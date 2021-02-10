@@ -1,0 +1,14 @@
+.Timebar {
+  height: 200px;
+  background-color: #386641;
+}
+
+.Timebar-wrapper {
+  height: 200px;
+  border: 2px solid black;
+  width: 20px;
+  margin-left: 80px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+}
