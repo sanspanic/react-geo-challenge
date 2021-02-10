@@ -25,7 +25,8 @@ const Gameboard = () => {
     clearInterval(timerId.current);
   };
 
-  //🧐 this stops the timer from continuing after first load, and sets game to over when timer reaches 0. wrapper in !isOver to prevent infinite re-render error 🧐
+  //🧐 this stops the timer from continuing after first load,
+  // and sets game to over when timer reaches 0. wrapper in !isOver to prevent infinite re-render error 🧐
   if (!isOver) {
     if (height <= 0) {
       stopTimer();
@@ -84,6 +85,7 @@ const Gameboard = () => {
 
   return (
     <div className="Gameboard">
+      <div>{height}</div>
       {selection.length === 0 ? (
         <button className="Gameboard-start-btn" onClick={startGame}>
           Start
@@ -101,7 +103,9 @@ const Gameboard = () => {
       </div>
       <div className="Gameboard-spacer"></div>
       <div className="Gameboard-score">
-        {isOver ? "GAME OVER. BOO!" : `Current score: ${score}`}
+        {isOver
+          ? `GAME OVER. BOO! Final score: ${score}`
+          : `Current score: ${score}`}
       </div>
     </div>
   );
