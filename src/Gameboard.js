@@ -14,6 +14,10 @@ const Gameboard = () => {
   const [isOver, setIsOver] = useState(false);
 
   useEffect(() => {
+    if (timerId.current) {
+      clearInterval(timerId.current);
+    }
+
     timerId.current = setInterval(() => {
       setHeight((h) => h - 1);
     }, 20);
@@ -27,16 +31,18 @@ const Gameboard = () => {
 
   //🧐 this stops the timer from continuing after first load,
   // and sets game to over when timer reaches 0. wrapper in !isOver to prevent infinite re-render error 🧐
-  if (!isOver) {
-    if (height <= 0) {
-      stopTimer();
-      console.log("TIMER was stopped");
-      if (gameStarted) {
-        console.log("GAME IS OVER");
-        setIsOver(true);
+  useEffect(() => {
+    if (!isOver) {
+      if (height <= 0) {
+        stopTimer();
+        console.log("TIMER was stopped");
+        if (gameStarted) {
+          console.log("GAME IS OVER");
+          setIsOver(true);
+        }
       }
     }
-  }
+  }, [height, isOver]);
 
   const pickRandomCountry = () => {
     let randNum = Math.floor(Math.random() * countryCodes.length);
@@ -85,7 +91,6 @@ const Gameboard = () => {
 
   return (
     <div className="Gameboard">
-      <div>{height}</div>
       {selection.length === 0 ? (
         <button className="Gameboard-start-btn" onClick={startGame}>
           Start
@@ -104,7 +109,7 @@ const Gameboard = () => {
       <div className="Gameboard-spacer"></div>
       <div className="Gameboard-score">
         {isOver
-          ? `GAME OVER. BOO! Final score: ${score}`
+          ? `GAME OVER! Final score: ${score}`
           : `Current score: ${score}`}
       </div>
     </div>
